@@ -38,7 +38,7 @@
                     <td>{{ $courses->id }}</td>
                     <td>{{ $courses->title }}</td>
                     <td><a href="{{ route('courses.show', $courses->id) }}">Посмотреть</a></td>
-                    <td><a href="#">Изменить</a></td>
+                    <td><a href="{{ route('courses.edit', $courses->id) }}">Изменить</a></td>
                     <td>
                         <form action="{{ route('courses.delete', $courses->id) }}" method="POST">
                             @csrf
@@ -53,14 +53,17 @@
     </div>
 </div>
 <script>
-   let btnDel = document.querySelector('.delete_button');
+   let btnDel = document.querySelectorAll('.delete_button');
 
-   btnDel.addEventListener('click', (e) => {
-        let result = confirm("Вы точно хотите удалить?");
-        if(!result) {
-            e.preventDefault();
-        }
-    });
+   btnDel.forEach((btn) => {
+       btn.addEventListener('click', (e) => {
+           let result = confirm("Вы точно хотите удалить?");
+           if(!result) {
+               e.preventDefault();
+           }
+       });
+   })
+
 </script>
 </body>
 </html>

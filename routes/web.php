@@ -19,6 +19,7 @@ Route::group(['namespace' => 'Main'], function () {
     Route::post('/store', 'StoreController')->name('courses.store');
     Route::delete('/delete/{courses}', 'DeleteController')->name('courses.delete');
     Route::post('/update/{courses}', 'UpdateController')->name('courses.update');
+    Route::get('/edit/{courses}', 'EditController')->name('courses.edit');
 });
 
 

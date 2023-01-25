@@ -13,28 +13,29 @@
     <a class="btn btn-primary" href="{{ route('courses.index') }}">
         Главная
     </a>
-    <form action="{{ route('courses.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('courses.update', $courses->id) }}" method="post" enctype="multipart/form-data">
         @csrf
+        <h1>update</h1>
         <div class="form-floating mb-4">
-            <input type="text" name="title" class="form-control" placeholder="Название курса">
+            <input type="text" name="title" class="form-control" placeholder="Название курса" value="{{$courses->title}}">
             <label for="floatingInput">Название курса</label>
         </div>
         @error('title')
-        <div class="text-danger">{{ $message }}</div>
+        <div class="text-danger">Это поле необходимо для заполнения {{ $message }}</div>
         @enderror
         <div class="form-floating mb-4">
-            <textarea name="description" class="form-control"></textarea>
+            <textarea name="description" class="form-control">{{ $courses->description }}</textarea>
             <label for="floatingPassword">Его описание</label>
         </div>
         @error('description')
-        <div class="text-danger">{{ $message }}</div>
+        <div class="text-danger">Это поле необходимо для заполнения {{ $message }}</div>
         @enderror
         <div class="form-floating mb-4">
-            <input type="text" name="duration_h" class="form-control" placeholder="Количество часов">
+            <input value="{{$courses->duration_h}}" type="text" name="duration_h" class="form-control" placeholder="Количество часов">
             <label for="floatingPassword">Количество часов</label>
         </div>
         @error('duration_h')
-        <div class="text-danger">{{ $message }}</div>
+        <div class="text-danger">Это поле необходимо для заполнения {{ $message }}</div>
         @enderror
         <div class="form-floating mb-4">
             <h4>Методические материалы</h4>
