@@ -24,6 +24,7 @@
         </nav>
     </div>
     <div class="m-5">
+        <button onclick='sortListDir()'>По названиею</button>
         <table class="table table-hover text-nowrap">
             <thead>
             <tr>
@@ -32,9 +33,9 @@
                 <th>Действие</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="id01">
             @foreach($coursesAll as $courses)
-                <tr>
+                <tr data-sort='{{ $courses->title }}' class='mt-3'>
                     <td>{{ $courses->id }}</td>
                     <td>{{ $courses->title }}</td>
                     <td><a href="{{ route('courses.show', $courses->id) }}">Посмотреть</a></td>
@@ -65,5 +66,7 @@
    })
 
 </script>
+
+<script src="{{ asset('js/sort.js') }}"></script>
 </body>
 </html>
