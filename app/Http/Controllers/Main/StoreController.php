@@ -14,36 +14,38 @@ class StoreController extends Controller
    {
 
 
-//       $paths = [];
-//
-//       foreach ($request->file('materials') as $file) {
-//           $paths[] = $file->store('/materials');
-//       }
-
-//dd($paths);
-
-
-
-//       $data = $request->validated();
+       $data = $request->validated();
 //dd($data);
-//       $path = [];
-//
-////       dd($data);
-//       foreach ($data['materials'] as $file) {
-//         $path[] = Storage::put('/materials', $file);
-//       }
-//       dd($path);
-//       $data['materials'] = $path;
-//       foreach ($data['materials'] as $file) {
+//       dd($data['materials']);
+//       foreach ($data['materials'] ?? [] as $file) {
 //           Storage::put('/materials', $file);
 //       }
-//      $res = array_replace($data['materials'], $path);
-//        dd($request->validated());
-       $data = $request->validated();
 
        Storage::put('/materials', $data['materials']);
 
-       Courses::firstOrCreate($data);
+
+       //Можно доработать https://www.tutsmake.com/laravel-9-upload-multiple-files-tutorial/
+
+//       if($request->hasfile('materials'))
+//       {
+//           foreach($request->file('materials') as $key => $file)
+//           {
+//               $path = $file->store('public/materials');
+//               $name = $file->getClientOriginalName();
+//
+//               $insert[$key]['name'] = $name;
+//               $insert[$key]['path'] = $path;
+//
+//           }
+//       }
+//       Courses::insert($insert);
+
+//       foreach ($request->file('materials') as $item) {
+//           $materialsName = $data['title'].time().rand(1,10000).'.'.$item->extension();
+//           $item->move(public_path('materials', $materialsName));
+//       }
+
+       Courses::create($request->validated());
        return redirect()->route('courses.index');
    }
 }

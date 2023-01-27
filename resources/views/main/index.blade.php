@@ -6,22 +6,24 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <title>Document</title>
 </head>
 <body>
-<div class="card-body table-responsive p-0 w-50 display-flex justify-content-center">
-
-
+<div class="container">
     <div class="sidebar">
-        <nav class="nav nav-pills nav-sidebar flex-column">
-            <ul class="pt-3 nav nav-pills nav-sidebar flex-column" data-widget="treeview">
-                <li class="nav-item">
-                    <a class="btn btn-primary" href="{{ route('courses.create') }}">
-                        Создать
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <a class="btn btn-primary" href="{{ route('courses.create') }}">
+            Создать
+        </a>
+    </div>
+    <div class="mt-4">
+        <select class="form-select w-50" id='per'>
+            <option selected>Количество записей на странице</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
     </div>
     <div class="m-5">
         <button onclick='sortListDir()'>По названиею</button>
@@ -38,19 +40,20 @@
                 <tr data-sort='{{ $courses->title }}' class='mt-3'>
                     <td>{{ $courses->id }}</td>
                     <td>{{ $courses->title }}</td>
-                    <td><a href="{{ route('courses.show', $courses->id) }}">Посмотреть</a></td>
-                    <td><a href="{{ route('courses.edit', $courses->id) }}">Изменить</a></td>
+                    <td><a role="button" class="btn btn-outline-success" href="{{ route('courses.show', $courses->id) }}">Посмотреть</a></td>
+                    <td><a role="button" class="btn btn-outline-secondary" href="{{ route('courses.edit', $courses->id) }}">Изменить</a></td>
                     <td>
                         <form action="{{ route('courses.delete', $courses->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button class="delete_button" type="submit">Удалить</button>
+                            <button class="btn btn-outline-danger delete_button" type="submit">Удалить</button>
                         </form>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+        <div>{{ $coursesAll->withQueryString()->links() }}</div>
     </div>
 </div>
 <script>
@@ -68,5 +71,6 @@
 </script>
 
 <script src="{{ asset('js/sort.js') }}"></script>
+<script src="{{ asset('js/perPage.js') }}"></script>
 </body>
 </html>

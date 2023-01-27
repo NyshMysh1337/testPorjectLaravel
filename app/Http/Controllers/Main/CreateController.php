@@ -9,7 +9,6 @@ class CreateController extends Controller
 {
    public function __invoke()
    {
-//       dd(1111111);
        return view('main.create');
    }
 }

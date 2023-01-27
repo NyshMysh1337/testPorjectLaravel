@@ -1,3 +1,4 @@
+// sort
 function sortListDir() {
     let list, i, switching, b, shouldSwitch, dir, switchcount = 0;
     list = document.getElementById("id01");
@@ -32,3 +33,22 @@ function sortListDir() {
       }
     }
   }
+
+  // perPage
+
+let per = document.getElementById('per');
+// console.log(per.children[2]);
+
+per.addEventListener('change', () => {
+    let a = per.value;
+    let url = new URLSearchParams(window.location.search)
+
+    if(!url.has('per')) {
+        url.append('per', '10')
+        window.location.search = url;
+    } else {
+        url.set('per', a)
+        window.location.search = url
+    }
+})
+

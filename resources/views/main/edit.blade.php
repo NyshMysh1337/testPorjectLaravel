@@ -23,6 +23,7 @@
         @error('title')
         <div class="text-danger">Это поле необходимо для заполнения {{ $message }}</div>
         @enderror
+
         <div class="form-floating mb-4">
             <textarea name="description" class="form-control">{{ $courses->description }}</textarea>
             <label for="floatingPassword">Его описание</label>
@@ -30,6 +31,7 @@
         @error('description')
         <div class="text-danger">Это поле необходимо для заполнения {{ $message }}</div>
         @enderror
+
         <div class="form-floating mb-4">
             <input value="{{$courses->duration_h}}" type="text" name="duration_h" class="form-control" placeholder="Количество часов">
             <label for="floatingPassword">Количество часов</label>
@@ -37,13 +39,23 @@
         @error('duration_h')
         <div class="text-danger">Это поле необходимо для заполнения {{ $message }}</div>
         @enderror
+
         <div class="form-floating mb-4">
             <h4>Методические материалы</h4>
-            <input type="file" name="materials" class="form-control" placeholder="Название курса">
+            <input type="file" name="materials" value="{{ $courses->materials }}" class="form-control" placeholder="Название курса">
         </div>
         @error('materials')
         <div class="text-danger">{{ $message }}</div>
         @enderror
+
+        <div class="form-floating mb-4">
+            <input type="text" name="hyper_link" value="{{ $courses->hyper_link }}" class="form-control" placeholder="Ссылка на видеоматериалы">
+            <label for="floatingPassword">Ссылка на видеоматериалы</label>
+        </div>
+        @error('hyper_link')
+        <div class="text-danger">{{ $message }}</div>
+        @enderror
+
         <button class="btn btn-primary" type="submit">
             Добавить
         </button>

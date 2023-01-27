@@ -11,10 +11,7 @@
 <body>
 
     <div class="container">
-        <h1> {{$courses->title}}</h1>
-        <div class="mt-3">
-            {{ $courses->description }}
-        </div>
+        
     </div>
 
 

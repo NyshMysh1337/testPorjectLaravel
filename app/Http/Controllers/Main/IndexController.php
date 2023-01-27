@@ -8,10 +8,20 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-   public function __invoke()
+
+//    public function subIndexMore($cat, $perPage) {
+//        $request->has('numProducts') ? $perPage = $request->get('numProducts') : 10;
+//
+//        $products = Courses::paginate($perPage);
+//        return view('pages.category',compact('products', 'category'));
+//    }
+
+   public function __invoke(Request $request)
    {
-       $coursesAll = Courses::all();
-//       dd($coursesAll);
+//       dd($request->query());
+
+       $coursesAll = Courses::paginate($request->query('per'));
+    //   dd($this->perPage);
 
        return view('main.index', compact('coursesAll'));
    }

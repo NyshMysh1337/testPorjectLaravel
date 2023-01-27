@@ -16,31 +16,42 @@
     <form action="{{ route('courses.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-floating mb-4">
-            <input type="text" name="title" class="form-control" placeholder="Название курса">
+            <input type="text" name="title" value="{{ old('title') }}" class="form-control" placeholder="Название курса">
             <label for="floatingInput">Название курса</label>
         </div>
         @error('title')
         <div class="text-danger">{{ $message }}</div>
         @enderror
+
         <div class="form-floating mb-4">
-            <textarea name="description" class="form-control"></textarea>
+            <textarea name="description" class="form-control">{{ old('description') }}</textarea>
             <label for="floatingPassword">Его описание</label>
         </div>
         @error('description')
         <div class="text-danger">{{ $message }}</div>
         @enderror
+
         <div class="form-floating mb-4">
-            <input type="text" name="duration_h" class="form-control" placeholder="Количество часов">
+            <input type="text" name="duration_h" value="{{ old('duration_h') }}" class="form-control" placeholder="Количество часов">
             <label for="floatingPassword">Количество часов</label>
         </div>
         @error('duration_h')
         <div class="text-danger">{{ $message }}</div>
         @enderror
+
         <div class="form-floating mb-4">
             <h4>Методические материалы</h4>
-            <input type="file" name="materials" class="form-control" placeholder="Название курса">
+            <input type="file" name="materials" value="{{ old('materials') }}" class="form-control" placeholder="Название курса">
         </div>
         @error('materials')
+        <div class="text-danger">{{ $message }}</div>
+        @enderror
+
+        <div class="form-floating mb-4">
+            <input type="text" name="hyper_link" value="{{ old('duration_h') }}" class="form-control" placeholder="Ссылка на видеоматериалы">
+            <label for="floatingPassword">Ссылка на видеоматериалы</label>
+        </div>
+        @error('hyper_link')
         <div class="text-danger">{{ $message }}</div>
         @enderror
         <button class="btn btn-primary" type="submit">

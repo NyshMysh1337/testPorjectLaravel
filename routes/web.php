@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['namespace' => 'Main'], function () {
     Route::get('/', 'IndexController')->name('courses.index');
+//    Route::get('/{per}', 'IndexController')->name('courses.index');
     Route::get('/{courses}/show', 'ShowController')->name('courses.show');
     Route::get('/create', 'CreateController')->name('courses.create');
     Route::post('/store', 'StoreController')->name('courses.store');

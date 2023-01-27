@@ -24,11 +24,11 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
-            'description' => 'required|string',
+            'title' => 'required|string|min:10',
+            'description' => 'required|string|min:20',
             'duration_h' => 'required|integer',
             'materials' => 'required',
-//            'hyper_link' => 'required|string'
+            'hyper_link' => 'required|url'
         ];
     }
     public function messages()
@@ -36,10 +36,14 @@ class StoreRequest extends FormRequest
         return [
             'title.required' => 'Это поле необходимо для заполнения',
             'title.string' => 'Данные должны соответствовать строчному типу',
+            'title.min' => 'Заголовок должен содержать минимум 10 символов',
             'description.string' => 'Данные должны соответствовать строчному типу',
             'description.required' => 'Это поле необходимо для заполнения',
+            'description.min' => 'Заголовок должен содержать минимум 20 символов',
             'duration_h.required' => 'Это поле необходимо для заполнения',
             'duration_h.integer' => 'Данные должны соответствовать числовому типу',
+            'hyper_link.required' => 'Это поле необходимо для заполнения',
+            'hyper_link.url' => 'Должно быть ссылкой!'
         ];
     }
 }
