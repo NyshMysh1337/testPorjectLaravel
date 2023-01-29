@@ -17,11 +17,11 @@ class StoreController extends Controller
        $data = $request->validated();
 
        $new_courses = Courses::firstOrCreate($data);
+
     if($request->has('materials')) {
         foreach ($request->file('materials') as $material) {
             $imageName = $data['title'].'-image-'.time().rand(1, 10000).'.'.$material->extension();
             $material->move(public_path('storage/materials'), $imageName);
-//            Storage::disk()
             Material::create([
                 'courses_id' => $new_courses->id,
                 'material' => $imageName
