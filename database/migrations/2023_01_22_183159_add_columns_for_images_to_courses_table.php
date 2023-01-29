@@ -14,7 +14,6 @@ class AddColumnsForImagesToCoursesTable extends Migration
     public function up()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->string('materials')->nullable();
             $table->string('hyper_link')->nullable();
         });
     }
@@ -27,9 +26,7 @@ class AddColumnsForImagesToCoursesTable extends Migration
     public function down()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->dropColumn('materials');
             $table->dropColumn('hyper_link');
-
         });
     }
 }

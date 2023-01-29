@@ -16,7 +16,7 @@
             Создать
         </a>
     </div>
-    <div class="mt-4">
+    <div class="mt-4 d-flex justify-content-center">
         <select class="form-select w-50" id='per'>
             <option selected>Количество записей на странице</option>
             <option value="10">10</option>
@@ -71,6 +71,5 @@
 </script>
 
 <script src="{{ asset('js/sort.js') }}"></script>
-<script src="{{ asset('js/perPage.js') }}"></script>
 </body>
 </html>

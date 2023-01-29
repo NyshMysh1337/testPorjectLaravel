@@ -11,7 +11,16 @@
 <body>
 
     <div class="container">
+        <div class="m-4 d-flex justify-content-center">
+            <h3>{{ $courses->title }}</h3>
+        </div>
 
+        <p class="mt-3">
+            {{ $courses->description }}
+        </p>
+
+
+{{--        @foreach($courses->) @endforeach--}}
     </div>
 
 

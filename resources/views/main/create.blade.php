@@ -41,7 +41,7 @@
 
         <div class="form-floating mb-4">
             <h4>Методические материалы</h4>
-            <input type="file" name="materials" value="{{ old('materials') }}" class="form-control" placeholder="Название курса">
+            <input type="file" name="materials[]" multiple value="{{ old('materials') }}" class="form-control" placeholder="Название курса">
         </div>
         @error('materials')
         <div class="text-danger">{{ $message }}</div>
