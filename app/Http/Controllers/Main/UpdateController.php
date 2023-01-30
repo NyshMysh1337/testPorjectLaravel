@@ -11,23 +11,26 @@ use Illuminate\Support\Facades\Storage;
 
 class UpdateController extends Controller
 {
-   public function __invoke(UpdateRequest $request, Courses $courses)
-   {
-       $data = $request->validated();
-       $materials = Material::where('courses_id', $courses->id)->get();
-       foreach ($materials as $material) {
-           Storage::delete($material->material);
-       }
-       $new_courses = $courses->update($data);
-       foreach ($request->file('materials') as $material) {
-           $imageName = $data['title'].'-image-'.time().rand(1, 10000).'.'.$material->extension();
-           $material->move(public_path('storage/materials'), $imageName);
-           Material::create([
-               'courses_id' => $courses->id,
-               'material' => $imageName
-           ]);
-       }
+    public function __invoke(UpdateRequest $request, Courses $courses)
+    {
+        $data = $request->validated();
+        $materials = Material::where('courses_id', $courses->id)->get();
+        foreach ($materials as $material) {
+            Storage::disk('public')->delete($material->material);
+        }
+        $new_courses = $courses->update($data);
+        if ($request->hasfile('materials')) {
+            foreach ($request->file('materials') as $file) {
+                $path = Storage::disk('public')->put('materials', $file);
+                $new_file_name = time() . "_" . uniqid() . "_" . $file->getClientOriginalName();
 
-       return view('main.show', compact('courses'));
-   }
+                Material::create([
+                    'courses_id' => $courses->id,
+                    'material' => $path
+                ]);
+            }
+
+            return view('main.show', compact('courses'));
+        }
+    }
 }

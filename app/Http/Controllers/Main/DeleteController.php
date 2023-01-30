@@ -16,7 +16,7 @@ class DeleteController extends Controller
 //       dd($materials);
        foreach ($materials as $material) {
 //           dd($material->material);
-            Storage::delete($material->material);
+            Storage::disk('public')->delete($material->material);
        }
 
        $courses->delete();
