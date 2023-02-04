@@ -7,8 +7,8 @@
         </a>
     </div>
     <div class="mt-4 d-flex justify-content-center">
+        Количество записей на странице
             <select class="form-select w-50" id='per' name="per">
-                <option >Количество записей на странице</option>
                 @foreach($perPageArr as $per)
                     <option value="{{ $per }}">{{$per}}</option>
                 @endforeach

@@ -35,6 +35,16 @@ function sortListDir() {
   }
 
   // perPage
+let a;
+
+if (JSON.parse(localStorage.getItem('selected')) === null ) {
+    a = 0
+} else {
+    a = JSON.parse(localStorage.getItem('selected'))
+}
+
+
+localStorage.setItem('selected', JSON.stringify(a));
 
 let per = document.getElementById('per');
 // console.log(per.children[2]);
@@ -48,12 +58,16 @@ if(!url.has('per_page')) {
 }
 ///
 
+let option = per.querySelectorAll('option')[JSON.parse(localStorage.getItem('selected'))]
+console.log(option)
+option.setAttribute('selected', 'selected')
 ///
 per.addEventListener('change', function () {
     let a = per.value;
 
     let index = per.selectedIndex
     console.log(index);
+    localStorage.setItem('selected', JSON.stringify(index))
     let option = per.querySelectorAll('option')[index]
     option.setAttribute('selected', 'selected')
 
