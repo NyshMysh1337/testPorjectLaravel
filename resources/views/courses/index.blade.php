@@ -7,12 +7,15 @@
         </a>
     </div>
     <div class="mt-4 d-flex justify-content-center">
-            <select class="form-select w-50" id='per'>
+            <select class="form-select w-50" id='per' name="per">
                 <option >Количество записей на странице</option>
-                <option value="10" >10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
+                @foreach($perPageArr as $per)
+                    <option value="{{ $per }}">{{$per}}</option>
+                @endforeach
+{{--                <option value="10" >10</option>--}}
+{{--                <option selected value="20">20</option>--}}
+{{--                <option value="50">50</option>--}}
+{{--                <option value="100">100</option>--}}
             </select>
     </div>
     <div class="m-5">

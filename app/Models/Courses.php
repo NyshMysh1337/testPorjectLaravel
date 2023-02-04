@@ -15,4 +15,5 @@ class Courses extends Model
     public function material() {
        return $this->hasMany(Material::class);
     }
+
 }
