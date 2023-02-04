@@ -11,7 +11,7 @@ class Material extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function store($request, $new_courses) {
+    public static function store($request, $new_courses) {
         if ($request->hasfile('materials')) {
             foreach ($request->file('materials') as $file) {
                 $path = Storage::disk('public')->put('materials', $file);
@@ -26,7 +26,7 @@ class Material extends Model
     }
 
 
-    public function updateMaterial($request, $courses)
+    public static function updateMaterial($request, $courses)
     {
         if ($request->hasfile('materials')) {
             foreach ($request->file('materials') as $file) {
