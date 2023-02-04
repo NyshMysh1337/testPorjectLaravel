@@ -39,16 +39,31 @@ function sortListDir() {
 let per = document.getElementById('per');
 // console.log(per.children[2]);
 
-per.addEventListener('change', () => {
-    let a = per.value;
-    let url = new URLSearchParams(window.location.search)
 
-    if(!url.has('per')) {
-        url.append('per', '10')
-        window.location.search = url;
-    } else {
-        url.set('per', a)
+let url = new URLSearchParams(window.location.search)
+
+if(!url.has('per_page')) {
+    url.append('per_page', JSON.parse(localStorage.getItem('per_page')))
+    window.location.search = url;
+}
+///
+
+///
+per.addEventListener('change', function () {
+    let a = per.value;
+
+    let index = per.selectedIndex
+    console.log(index);
+    let option = per.querySelectorAll('option')[index]
+    option.setAttribute('selected', 'selected')
+
+    localStorage.setItem('per_page', JSON.stringify(a))
+
+    debugger
+        this.setAttribute('selected', 'selected')
+    console.log(JSON.parse(localStorage.getItem('per_page')))
+        url.set('per_page', JSON.parse(localStorage.getItem('per_page')))
         window.location.search = url
-    }
+
 })
 

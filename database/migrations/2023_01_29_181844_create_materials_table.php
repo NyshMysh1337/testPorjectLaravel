@@ -15,7 +15,7 @@ class CreateMaterialsTable extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Courses::class)->constrained()->onDelete('cascade');
+            $table->foreignId('courses_id')->constrained()->onDelete('cascade');
             $table->string('material');
             $table->timestamps();
         });

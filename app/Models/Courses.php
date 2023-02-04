@@ -12,7 +12,7 @@ class Courses extends Model
     protected $table = 'courses';
     protected $guarded = false;
 
-    public function materials() {
-        $this->hasMany(Material::class);
+    public function material() {
+       return $this->hasMany(Material::class);
     }
 }

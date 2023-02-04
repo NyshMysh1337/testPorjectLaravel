@@ -19,10 +19,11 @@ class IndexController extends Controller
    public function __invoke(Request $request)
    {
 //       dd($request->query());
-
-       $coursesAll = Courses::paginate($request->query('per'));
+//        dump($request->query('per'));
+       dump($request->query('per_page'));
+       $coursesAll = Courses::paginate($request->get('per_page', 10));
     //   dd($this->perPage);
 
-       return view('main.index', compact('coursesAll'));
+       return view('courses.index', compact('coursesAll'));
    }
 }

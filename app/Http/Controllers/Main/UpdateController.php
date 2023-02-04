@@ -13,9 +13,12 @@ class UpdateController extends Controller
 {
     public function __invoke(UpdateRequest $request, Courses $courses)
     {
+//        $coursesAll = Courses::all();
         $data = $request->validated();
-        $materials = Material::where('courses_id', $courses->id)->get();
+//        $materials = Material::where('courses_id', $courses->id)->get();
+        $materials = $courses->material;
         foreach ($materials as $material) {
+            Material::where('courses_id', $courses->id)->delete();
             Storage::disk('public')->delete($material->material);
         }
         $new_courses = $courses->update($data);
@@ -30,7 +33,7 @@ class UpdateController extends Controller
                 ]);
             }
 
-            return view('main.show', compact('courses'));
+            return redirect()->route('courses.index');
         }
     }
 }

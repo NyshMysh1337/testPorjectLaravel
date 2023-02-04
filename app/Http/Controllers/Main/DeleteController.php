@@ -11,8 +11,8 @@ class DeleteController extends Controller
 {
    public function __invoke(Courses $courses)
    {
-       $materials = Material::where('courses_id', $courses->id)->get();
-
+//       $materials = Material::where('courses_id', $courses->id)->get();
+       $materials = $courses->material;
 //       dd($materials);
        foreach ($materials as $material) {
 //           dd($material->material);
