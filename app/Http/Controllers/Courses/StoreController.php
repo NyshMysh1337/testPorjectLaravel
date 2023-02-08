@@ -16,7 +16,7 @@ class StoreController extends Controller
 
         $data = $request->validated();
         $newCourses = Courses::firstOrCreate($data);
-        dd($request->file('materials'));
+//        dd($request->file('materials'));
 
         Material::store($request, $newCourses);
 
