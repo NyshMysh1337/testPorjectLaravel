@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['namespace' => 'Main'], function () {
+Route::group(['namespace' => 'Courses'], function () {
     Route::get('/', 'IndexController')->name('courses.index');
     Route::get('/{courses}/show', 'ShowController')->name('courses.show');
     Route::get('/create', 'CreateController')->name('courses.create');

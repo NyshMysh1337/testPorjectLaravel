@@ -27,7 +27,8 @@ class StoreRequest extends FormRequest
             'title' => 'required|string|min:10',
             'description' => 'required|string|min:20',
             'duration_h' => 'required|integer',
-            'hyper_link' => 'required|url'
+            'hyper_link' => 'required|url',
+//            'materials' => 'required'
         ];
     }
     public function messages()
@@ -42,7 +43,9 @@ class StoreRequest extends FormRequest
             'duration_h.required' => 'Это поле необходимо для заполнения',
             'duration_h.integer' => 'Данные должны соответствовать числовому типу',
             'hyper_link.required' => 'Это поле необходимо для заполнения',
-            'hyper_link.url' => 'Должно быть ссылкой!'
+            'hyper_link.url' => 'Должно быть ссылкой!',
+            'materials.required' => 'Это поле обязательно'
+//            'materials.required' => 'Это поле необходимо для заполнения',
         ];
     }
 }

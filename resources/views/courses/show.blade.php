@@ -15,10 +15,14 @@
                 {{ $courses->description }}
             </p>
         </div>
-        @foreach($courses->material as $material)
-            <img class="w-25 m-4" src="{{ url('storage/' . $material->material) }}">
-        @endforeach
-
+        <div class="d-flex">
+            @foreach($courses->material as $material)
+                <div>
+                    <img class="w-25 m-4" src="{{ url('storage/' . $material->material) }}">
+                    <a href={{ url('storage/' . $material->material) }} download="">скачать</a>
+                </div>
+            @endforeach
+        </div>
         <div class="mt-3">
             Ссылка на <a href="{{ $courses->hyper_link }}">видео материалы</a>
         </div>

@@ -11,14 +11,14 @@ class Material extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public static function store($request, $new_courses) {
+    public static function store($request, $newCourses) {
         if ($request->hasfile('materials')) {
             foreach ($request->file('materials') as $file) {
                 $path = Storage::disk('public')->put('materials', $file);
-                $new_file_name = time() . "_" . uniqid() . "_" . $file->getClientOriginalName();
+                time() . "_" . uniqid() . "_" . $file->getClientOriginalName();
 
                 Material::create([
-                    'courses_id' => $new_courses->id,
+                    'courses_id' => $newCourses->id,
                     'material' => $path
                 ]);
             }
@@ -26,12 +26,17 @@ class Material extends Model
     }
 
 
-    public static function updateMaterial($request, $courses)
+    public static function updateMaterial($request, $courses, $materials)
     {
+        foreach ($materials as $material) {
+            Material::where('courses_id', $courses->id)->delete();
+            Storage::disk('public')->delete($material->material);
+        }
+
         if ($request->hasfile('materials')) {
             foreach ($request->file('materials') as $file) {
                 $path = Storage::disk('public')->put('materials', $file);
-                $new_file_name = time() . "_" . uniqid() . "_" . $file->getClientOriginalName();
+                time() . "_" . uniqid() . "_" . $file->getClientOriginalName();
 
                 Material::create([
                     'courses_id' => $courses->id,

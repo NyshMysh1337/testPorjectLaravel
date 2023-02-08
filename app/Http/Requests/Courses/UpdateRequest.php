@@ -27,7 +27,8 @@ class UpdateRequest extends FormRequest
             'title' => 'required|string|min:10',
             'description' => 'required|string|min:20',
             'duration_h' => 'required|integer',
-            'hyper_link' => 'required|url'
+            'hyper_link' => 'required|url',
+//            'materials' => 'required|file'
         ];
     }
 
