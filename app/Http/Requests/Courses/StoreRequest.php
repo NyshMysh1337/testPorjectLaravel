@@ -44,8 +44,7 @@ class StoreRequest extends FormRequest
             'duration_h.integer' => 'Данные должны соответствовать числовому типу',
             'hyper_link.required' => 'Это поле необходимо для заполнения',
             'hyper_link.url' => 'Должно быть ссылкой!',
-            'materials.required' => 'Это поле обязательно'
-//            'materials.required' => 'Это поле необходимо для заполнения',
+//            'materials.required' => 'Это поле обязательно'
         ];
     }
 }

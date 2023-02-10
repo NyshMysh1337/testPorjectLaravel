@@ -1,9 +1,11 @@
 @extends('layouts.main')
 @section('content')
     <div class="container">
-    <a class="btn btn-primary mt-4" href="{{ route('courses.index') }}">
-        Главная
-    </a>
+        <a class="btn btn-primary mt-4" href="{{ route('courses.index') }}">
+            Главная
+        </a>
+        <div class="row align-items-center">
+<div class="col">
     <form class="m-4" action="{{ route('courses.update', $courses->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         <h1>Обновление</h1>
@@ -52,6 +54,18 @@
             Изменить
         </button>
     </form>
+</div>
+            <div class="col">
+                @foreach($courses->material as $file)
+                        <img class="w-25 m-4" src="{{ url('storage/' . $file->material) }}">
+                        <form action={{route('delete.file', $file->id)}} method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger">Удалить</button>
+                        </form>
+                @endforeach
+            </div>
+        </div>
     </div>
 @endsection
 

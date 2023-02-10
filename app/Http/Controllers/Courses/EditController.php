@@ -10,6 +10,7 @@ class EditController extends Controller
 {
    public function __invoke(Courses $courses)
    {
+//       dd($courses->material);
        return view('courses.edit', compact('courses'));
    }
 }

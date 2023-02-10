@@ -16,9 +16,9 @@ class UpdateController extends Controller
         $data = $request->validated();
         $materials = $courses->material;
 
-        Courses::updateCourse($data, $courses);
+        $courses->update($data);
         Material::updateMaterial($request, $courses, $materials);
 
-            return redirect()->route('courses.index');
-        }
+        return redirect()->route('courses.index');
+    }
 }

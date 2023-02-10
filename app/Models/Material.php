@@ -28,11 +28,6 @@ class Material extends Model
 
     public static function updateMaterial($request, $courses, $materials)
     {
-        foreach ($materials as $material) {
-            Material::where('courses_id', $courses->id)->delete();
-            Storage::disk('public')->delete($material->material);
-        }
-
         if ($request->hasfile('materials')) {
             foreach ($request->file('materials') as $file) {
                 $path = Storage::disk('public')->put('materials', $file);
@@ -44,6 +39,12 @@ class Material extends Model
                 ]);
             }
         }
+    }
+
+    public function deleteFile($images, $id) {
+        Storage::disk('public')->delete($images->material);
+
+        Material::find($id)->delete();
     }
 }
 

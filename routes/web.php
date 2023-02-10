@@ -20,6 +20,7 @@ Route::group(['namespace' => 'Courses'], function () {
     Route::delete('/delete/{courses}', 'DeleteController')->name('courses.delete');
     Route::post('/update/{courses}', 'UpdateController')->name('courses.update');
     Route::get('/edit/{courses}', 'EditController')->name('courses.edit');
+    Route::delete('/deletefile/{id}', 'DeleteFileController')->name('delete.file');
 });
 
 

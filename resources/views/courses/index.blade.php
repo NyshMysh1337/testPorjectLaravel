@@ -12,10 +12,6 @@
                 @foreach($perPageArr as $per)
                     <option value="{{ $per }}">{{$per}}</option>
                 @endforeach
-{{--                <option value="10" >10</option>--}}
-{{--                <option selected value="20">20</option>--}}
-{{--                <option value="50">50</option>--}}
-{{--                <option value="100">100</option>--}}
             </select>
     </div>
     <div class="m-5">
