@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Storage;
 
 class StoreController extends Controller
 {
-    public function __invoke(StoreRequest $request)
+    public function __invoke(StoreRequest $request, \App\Http\Requests\Material\StoreRequest $storeRequest)
     {
 
         $data = $request->validated();
-//        dd($request->all());
+        $storeRequest->validated();
         $newCourses = Courses::firstOrCreate($data);
 
         Material::store($request, $newCourses);

@@ -28,7 +28,6 @@ class StoreRequest extends FormRequest
             'description' => 'required|string|min:20',
             'duration_h' => 'required|integer',
             'hyper_link' => 'required|url',
-//            'materials' => 'required'
         ];
     }
     public function messages()

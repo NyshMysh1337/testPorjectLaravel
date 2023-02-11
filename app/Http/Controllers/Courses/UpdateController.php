@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\Storage;
 
 class UpdateController extends Controller
 {
-    public function __invoke(UpdateRequest $request, Courses $courses)
+    public function __invoke(UpdateRequest $request, \App\Http\Requests\Material\UpdateRequest $updateRequest, Courses $courses)
     {
         $data = $request->validated();
         $materials = $courses->material;
+        $updateRequest->validated();
 
         $courses->update($data);
         Material::updateMaterial($request, $courses, $materials);
